@@ -4,11 +4,12 @@ Library          String
 
 *** Test Cases ***
 Use a custom defined keyword
-    Generate Random Numeric String And Replace Fours With X
+    ${random_no_fours}=  Generate Random Numeric String And Replace Fours With X
+    Should Not Contain  ${random_no_fours}  4
 
 *** Keywords ***
 Generate Random Numeric String And Replace Fours With X
     ${random_numeric_string}=  Generate Random String  16  [NUMBERS]
     ${new_string}=  Replace String  ${random_numeric_string}  4  X
-    Log To Console  ${new_string}
+    [Return]  ${new_string}
 
