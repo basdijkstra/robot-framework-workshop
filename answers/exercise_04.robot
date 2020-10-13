@@ -5,9 +5,8 @@ Library          Collections
 
 *** Test Cases ***
 Check that a valid HTTP call yields status 200 and the expected todo title
-    Create Session  todos  http://jsonplaceholder.typicode.com/todos
-    ${response}=    Get Request  todos  /1
+    Create Session  zip  http://api.zippopotam.us
+    ${response}=    Get Request  zip  /us/90210
     Status Should Be  200  ${response}
-    ${title}=  Get From Dictionary  ${response.json()}  title
-    Should Be Equal  ${title}  delectus aut autem
-
+    ${country}=  Get From Dictionary  ${response.json()}  country
+    Should Be Equal  ${country}  United States
